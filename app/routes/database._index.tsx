@@ -2,7 +2,7 @@ export default function DatabaseIndexRoute() {
   return (
     <div>
       <p>Here are some common searches:</p>
-      <ul>
+      <ul className="list-disc list-outside">
         <li>Valentine lineages</li>
         <li>Halloween lineages</li>
         <li>Christmas lineages</li>

@@ -1,13 +1,17 @@
 import { Links, LiveReload, Outlet } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
-import stylesheet from "./tailwind.css";
+import stylesheet from "~/tailwind.css";
+import type { PropsWithChildren } from "react";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-export default function App() {
+function Document({
+  children,
+  title = "Dragon Cave Lineage Database: A Dragon Cave fansite for lineage lovers",
+}: PropsWithChildren<{ title?: string }>) {
   return (
     <html lang="en">
       <head>
@@ -17,9 +21,17 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <div className="container">{children}</div>
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
   );
 }
